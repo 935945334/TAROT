@@ -1,0 +1,119 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	background: #eee;
+}
+#Mask{
+	width: 100vw;
+	height: 100vh;
+	background: url(images/Mask.png);
+	position: absolute;
+	top: 0;
+	pointer-events: none;
+	z-index: 100;
+}
+#Mask-h{
+	width: 100vw;
+	height: 100vh;
+	background: #000;
+	position: absolute;
+	top: 0;
+	pointer-events: none;
+	z-index: 8;
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+}
+#box{
+	width: 100vw;
+	height: 100vh;
+	background: #34313f;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    /*display: none;*/
+}
+.k0{
+	position: absolute;
+	width: 14vw;
+	top: 66vh;
+	left: calc(50% - 7vw);
+	-webkit-transform: 0px;
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	transition: all 0.5s ease 0s;
+}
+#Btn{
+	width: 100vw;
+	position: absolute;
+	/*top: calc(100vh - 120px);*/
+	top: 84vh;
+}
+#bg-0-img{
+	width: 100vw;
+}
+#bg-1{
+	background: url(images/bg-1.png);
+	background-size: 100%;
+	height: 100%;
+	flex-grow: auto;
+}
+#bg-2-img{
+	width: 100vw;
+}
+#Cards{
+	position: absolute;
+	width: 14vw;
+	top: 66vh;
+	left: calc(50% - 7vw);
+	z-index: 10;
+	transition: all 1s ease 0s;
+	display: none;
+}
+.swiper-container{
+	width: 90vw;
+	top: 5vh;
+	left: calc(50% - 45vw);
+	position: absolute;
+	pointer-events: none;
+	z-index: 9;
+	opacity: 0;
+	/*display: none;*/
+}
+.swiper-slide{
+	width: 100vw;
+	height: 160vw;
+	background-size: 100%;
+	pointer-events: none;
+}
+
+.Cards{
+	width: 90vw;
+	top: 10vh;
+	left: calc(50% - 45vw);
+}
+#swiper-slide-1{
+	pointer-events: none;
+	background:url(images/Cards-bg.png);
+	background-size: 100%;
+	transition: transform 0 ease 0;
+}
+
+#swiper-slide-2{
+	pointer-events: none;
+	background:url(images/Cards-bg.png);
+	transition: transform 0 ease 0;
+}
+
+
+
+
+
