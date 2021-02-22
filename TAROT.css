@@ -17,18 +17,19 @@ body{
 	position: absolute;
 	top: 0;
 	pointer-events: none;
-	z-index: 100;
+	z-index: 100000;
 }
 #Mask-h{
 	width: 100vw;
 	height: 100vh;
-	background: #000;
+	background: #34313f;
 	position: absolute;
 	top: 0;
 	pointer-events: none;
 	z-index: 8;
 	opacity: 0;
 	transition: all 0.5s ease 0s;
+	z-index: 10000;
 }
 #box{
 	width: 100vw;
@@ -44,29 +45,44 @@ body{
 	position: absolute;
 	width: 14vw;
 	top: 66vh;
-	left: calc(50% - 7vw);
+	left: 100vw;
 	-webkit-transform: 0px;
 	-ms-transform: rotate(0deg);
 	-o-transform: rotate(0deg);
 	transform: rotate(0deg);
 	transition: all 0.5s ease 0s;
+	z-index: 2000;
+	opacity: 0;
 }
 #Btn{
 	width: 100vw;
 	position: absolute;
 	/*top: calc(100vh - 120px);*/
 	top: 84vh;
+	z-index: 9999;
+	opacity: 0;
+	transition: all 1s ease 0s;
 }
-#bg-0-img{
+#Btn-1{
+	width: 100vw;
+	position: absolute;
+	top: calc(100vh - 120px);
+	top: 84vh;
+	z-index: 99999;
+	opacity: 0;
+	transition: all 1s ease 0s;
+	display: none;
+}
+#load-k-1{
 	width: 100vw;
 }
-#bg-1{
-	background: url(images/bg-1.png);
+#load-k-2{
+	background: url(images/load-k-2.png);
 	background-size: 100%;
 	height: 100%;
 	flex-grow: auto;
 }
-#bg-2-img{
+#load-k-3{
 	width: 100vw;
 }
 #Cards{
@@ -77,6 +93,7 @@ body{
 	z-index: 10;
 	transition: all 1s ease 0s;
 	display: none;
+	z-index: 10001;
 }
 .swiper-container{
 	width: 90vw;
@@ -86,6 +103,7 @@ body{
 	pointer-events: none;
 	z-index: 9;
 	opacity: 0;
+	z-index: 10001;
 	/*display: none;*/
 }
 .swiper-slide{
@@ -104,16 +122,102 @@ body{
 	pointer-events: none;
 	background:url(images/Cards-bg.png);
 	background-size: 100%;
-	transition: transform 0 ease 0;
 }
 
 #swiper-slide-2{
 	pointer-events: none;
 	background:url(images/Cards-bg.png);
-	transition: transform 0 ease 0;
 }
 
+#loda{
+	position: absolute;
+	z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	background: #34313f;
+	display: -webkit-flex;
+    display: flex;
+}
+#load-k{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 9999;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+.load-w{
+	width: 128vw;
+	left: calc(50% - 64vw);
+	top: calc(50% - 64vw);
+	position: absolute;
+	transition: all 10s linear 0s;
+	transform: 0;
+	opacity: 1;
+}
+#load-4{
+	width: 100vw;
+	top: calc(50% - 89vw);
+	position: absolute;
+	opacity: 1;
+}
+#load-bg{
+	width: 100vw;
+	height: 100vh;
+	background: #34313f;
+	margin: auto;
+	transition: all 1s ease 0s;
+	opacity: 0;
+	z-index: 996;
+}
+#bz{
+	width: 100vw;
+	position: absolute;
+	z-index: 997;
+	transition: all 3s ease 0s;
+	opacity: 0;
+	top: 10vh;
+}
+#bz-w{
+	width: 100vw;
+	position: absolute;
+	z-index: 996;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+	mix-blend-mode: soft-light;
+}
+#title{
+	width: 100vw;
+	position: absolute;
+	z-index: 998;
+	top: 40vh;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+}
 
+.cache{
+	width: 50px;
+	position: absolute;
+}
+#unscramble{
+	width: 100vw;
+	z-index: 11111;
+	position: absolute;
+	top: 100vh;
+	transition: all 1s ease 0s;
+}
+#text-title{
+	position: absolute;
+	color: #dbaf5b;
+	font-size: 15px;
+	z-index: 999999;
+	width: 100vw;
+	text-align: center;
+	display: block;
+	top: calc(54vw + 5vh);
+}
 
 
 
