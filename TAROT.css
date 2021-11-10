@@ -10,6 +10,14 @@ html, body {
 body{
 	background: #eee;
 }
+#bz{
+	width: 100vw;
+	position: absolute;
+	z-index: 997;
+	transition: all 3s ease 0s;
+	opacity: 0;
+	top: 10vh;
+}
 #Mask{
 	width: 100vw;
 	height: 100vh;
@@ -67,7 +75,7 @@ body{
 	width: 100vw;
 	position: absolute;
 	top: calc(100vh - 120px);
-	top: 84vh;
+	top: 88vh;
 	z-index: 99999;
 	opacity: 0;
 	transition: all 1s ease 0s;
@@ -104,7 +112,6 @@ body{
 	z-index: 9;
 	opacity: 0;
 	z-index: 10001;
-	/*display: none;*/
 }
 .swiper-slide{
 	width: 100vw;
@@ -127,6 +134,7 @@ body{
 #swiper-slide-2{
 	pointer-events: none;
 	background:url(images/Cards-bg.png);
+	background-size: 100%;
 }
 
 #loda{
@@ -172,14 +180,7 @@ body{
 	opacity: 0;
 	z-index: 996;
 }
-#bz{
-	width: 100vw;
-	position: absolute;
-	z-index: 997;
-	transition: all 3s ease 0s;
-	opacity: 0;
-	top: 10vh;
-}
+
 #bz-w{
 	width: 100vw;
 	position: absolute;
@@ -217,7 +218,47 @@ body{
 	text-align: center;
 	display: block;
 	top: calc(54vw + 5vh);
+	display: none;
+	opacity: 0;
+	transition: all 1s ease 0s;
 }
+#text-box{
+	width: 100vw;
+	height: 59vh;
+	color: #dbaf5b;
+	top: 100vh;
+	/*background: #fff;*/
+	font-size: 14px;
+	transition: all 1s ease 0s;
+	position: relative;
+	z-index: 999999;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    align-items: center;
+/*	-webkit-justify-content: space-around;
+    justify-content: space-around;*/
+}
+#text-box div{
+	width: 90vw;
+	margin-top: 4px;
+	text-align:center;
+	display: block;
+}
+#text-box div img{
+	width: 40vw;
+	margin-top: 10px;
 
-
-
+}
+#jz-text{
+	width: 100vw;
+	text-align:center;
+	color: #dbaf5b;
+	font-size: 12px;
+	position: absolute;
+	z-index: 100000;
+	bottom: 0;
+    opacity: 0;
+}
