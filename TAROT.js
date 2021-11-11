@@ -140,7 +140,7 @@ Btn_2.addEventListener("click",function(e){
 	Cards.style.width = www + "px";
 	Cards.style.left = "calc(50% - " + www/2 + "px)";
 	name_text.style.top = Cards.offsetTop + www/9*16 + 6 + "px";
-	text.style.top = Cards.offsetTop + www/9*16 + 16 + "px";
+	text.style.top = Cards.offsetTop + www/9*16 + 12 + "px";
 	text.style.height = frame.clientHeight - (Cards.offsetTop + www/9*16) + "px";
 	text.style.opacity = 1;
 	Btn_2.style.opacity = 0;
