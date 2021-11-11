@@ -188,9 +188,6 @@ img{
 #swiper-slide-img-2{
 	pointer-events: none;
 }
-#swiper-slide-img-2{
-	transform:rotate(180deg);
-}
 #name{
 	position: relative;
 	text-align:center;
