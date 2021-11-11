@@ -1,20 +1,250 @@
-var Mask_h = document.getElementById("Mask-h");
-var Btn = document.getElementById("Btn");
-var Btn_1 = document.getElementById("Btn-1");
-var unscramble = document.getElementById("unscramble");
+var frame = document.getElementById("frame");
+var card_arr = document.getElementById("card-arr");
+var card_frame = document.getElementById("card-frame");
 var k = document.getElementsByClassName("k0");
-var text = document.getElementsByClassName("text");
-var Cards = document.getElementById("Cards");
+var Btn = document.getElementById("btn-1");
 var Cards_rotate = document.getElementById("Cards-rotate");
-var swiper_wrapper = document.getElementById("swiper-wrapper");
-var swiper_slide = document.getElementsByClassName("swiper-slide");
-var swiper_1 = document.getElementById("swiper-slide-1");
-var swiper_2 = document.getElementById("swiper-slide-2");
-var text_title = document.getElementById("text-title");
-var text_box = document.getElementById("text-box");
+var name_text = document.getElementById("name");
+var Btn_2 = document.getElementById("Btn-2");
+var Cards = document.getElementById("Cards");
+var text = document.getElementById("text");
+var equipment;
 var Num;
 var direction;
 var Refresh = false;
+var NAME;
+var directionArr = ["(正位)","(逆位)"]
+
+
+
+if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+	console.log("手机");
+	equipment = "手机";
+	frame.style.width = "100%";
+	frame.style.height = "100%";
+	document.getElementById("load-m").style.display = "block";
+}else{
+	console.log("电脑");
+	equipment = "电脑";
+	frame.style.width = "375px";
+	frame.style.height = "710px";
+	frame.style.border = "4px solid #dbaf5b";
+	frame.style.borderRadius = "10px";
+	frame.style.boxShadow = "#272531 10px 10px 50px";
+	frame.style.margin = "0 auto";
+	frame.style.top = "50px";
+	frame.style.overflow = "hidden";
+	document.getElementById("load-p").style.display = "block";
+}
+if (localStorage.save_Time != new Date().getDate()) {
+	localStorage.removeItem("save_Time");
+	localStorage.removeItem("save_Name");
+	localStorage.removeItem("save_direction");
+}
+var time = localStorage.save_Time;
+// console.log(time);
+Btn.addEventListener("click",function(e){
+	if (time == undefined) {
+		direction = Math.round(Math.random());
+		Num = Math.floor(Math.random()*22)
+		localStorage.save_Time = new Date().getDate();
+		localStorage.save_Name = Num;
+		localStorage.save_direction = direction;
+	}else{
+		direction = localStorage.save_direction;
+		Num = localStorage.save_Name;
+	}
+	document.getElementById("swiper-slide-img-2").src = "images/" + Num + ".png";
+	Cards.src = "images/" + Num + ".png";
+	if (direction == 1) {
+		document.getElementById("swiper-slide-img-2").style.transform = "rotate(180deg)";
+		Cards.style.transform = "rotate(180deg)";
+		NAME = Name_1;
+	}else{
+		NAME = Name_0;
+	}
+	name_text.innerHTML = NAME[Num][0] + directionArr[direction];
+	document.getElementById("text-1-1").innerHTML = NAME[Num][1];
+	document.getElementById("text-2-1").innerHTML = NAME[Num][2];
+	document.getElementById("text-3-1").innerHTML = NAME[Num][3];
+	var ttt = k[0].offsetTop;
+	Btn.style.pointerEvents = "none";
+	for(var i = 0; i < 5; i++) {
+		(function(i) {
+			setTimeout(function() {
+				for(var x = 0; x < 22; x++) {
+					k[x].style.left =  "calc(" + (20 + Math.ceil(Math.random()*60)) + "% - 25px)";
+					k[x].style.top = card_arr.offsetTop + Math.ceil(Math.random()*(card_arr.clientHeight/2-20)) + "px";
+					k[x].style.transform = "rotate(" + i + Math.ceil(Math.random()*100) + "deg)";
+				}
+			}, (i)*500);
+		})(i)
+	}
+	setTimeout(function() {
+		for(var x = 0; x < 22; x++) {
+			k[x].style.left =  "calc(50% - 25px)";
+			k[x].style.top =  ttt + "px";
+			k[x].style.transform = "rotate(0deg)";
+		}
+	}, 2500);
+	setTimeout(function() {
+		if (equipment == "手机") {
+			var www = window.screen.height*0.8/16*9
+		}else{
+			var www = 330;
+		}
+		k[21].style.width = www + "px";
+		k[21].style.top = "3%";
+		k[21].style.left = "calc(50% - " + www/2 + "px)";
+		document.getElementById("load-k").style.opacity = 0;
+		document.getElementById("bz").style.opacity = 0;
+		document.getElementById("card-title").style.opacity = 0;
+		Cards_rotate.style.width = www + "px";
+		// Cards_rotate.style.height = window.screen.height*0.8 + "px";
+		Cards_rotate.style.left = "calc(50% - " + www/2 + "px)";
+		Cards.style.width = www + "px";
+		// Cards.style.height = window.screen.height*0.8 + "px";
+		Cards.style.left = "calc(50% - " + www/2 + "px)";
+		document.getElementById("swiper-slide-img-1").style.width = www + "px";
+		document.getElementById("swiper-slide-img-2").style.width = www + "px";
+
+		
+	}, 3200);
+	setTimeout(function() {
+		Btn.style.opacity = 0;
+	}, 3300);
+	setTimeout(function() {
+		document.getElementsByClassName("swiper-slide")[1].style.pointerEvents = "none";
+		Cards_rotate.style.opacity = 1;
+	}, 3800);
+	setTimeout(function() {
+		document.getElementById("bz").style.display = "none";
+		card_frame.style.opacity = 0;
+		swiper.slideTo(1, 1000, false);
+		name_text.style.opacity = 1;
+		name_text.style.top = Cards_rotate.offsetTop + Cards_rotate.clientHeight + 6 + "px";
+		Btn_2.style.opacity = 1;
+		Btn_2.style.top = Cards_rotate.offsetTop + Cards_rotate.clientHeight + 30 + "px";
+		card_frame.style.display = "none";
+	}, 4000);
+	setTimeout(function() {
+		Cards.style.opacity = 1;
+	}, 5000);
+});
+Btn_2.addEventListener("click",function(e){
+	if (equipment == "手机") {
+		var www = window.screen.height*0.18
+	}else{
+		var www = 150;
+	}
+	Cards_rotate.style.display = "none";
+	Cards.style.width = www + "px";
+	Cards.style.left = "calc(50% - " + www/2 + "px)";
+	name_text.style.top = Cards.offsetTop + www/9*16 + 6 + "px";
+	text.style.top = Cards.offsetTop + www/9*16 + 16 + "px";
+	text.style.height = frame.clientHeight - (Cards.offsetTop + www/9*16) + "px";
+	text.style.opacity = 1;
+	Btn_2.style.opacity = 0;
+})
+
+for(var i = 0; i < 22; i++) {
+	var Img = document.createElement("img");
+	Img.src = "images/Cards-bg.png";
+	card_arr.appendChild(Img).className = "k0";
+
+}
+
+var swiper = new Swiper(".mySwiper", {
+	effect: "flip",
+	grabCursor: true,
+});
+
+
+
+
+
+setTimeout(function() {
+	document.getElementById("load-m-3").style.transform = "rotate(360deg)";
+	document.getElementById("load-p-3").style.transform = "rotate(360deg)";
+}, 300);
+setTimeout(function() {
+	document.getElementById("load-m-2").style.transform = "rotate(-360deg)";
+	document.getElementById("load-p-2").style.transform = "rotate(-360deg)";
+}, 200);
+setTimeout(function() {
+	document.getElementById("load-m-1").style.transform = "rotate(360deg)";
+	document.getElementById("load-p-1").style.transform = "rotate(360deg)";
+}, 100);
+setTimeout(function() {
+	document.getElementById("jz-text").style.opacity = 1;
+}, 500);
+
+window.onload = function(){ 
+	Refresh = true;
+    document.getElementById("jz-text").style.display = "none";
+	setTimeout(function() {
+		document.getElementById("load-p").style.opacity = 0;
+		document.getElementById("load-m").style.opacity = 0;
+		document.getElementById("bz").style.opacity = 1;
+		card_frame.style.opacity = 1;
+		// document.getElementById("title").style.opacity = 1;
+	}, 1000);
+	setTimeout(function() {
+		document.getElementById("bz-r").style.transition = "all 0.5s ease 0s";
+		document.getElementById("bz-r").style.top = 0;
+		card_frame.style.top = 0;
+	}, 1200);
+	setTimeout(function() {
+		for(var i = 0; i < 22; i++) {
+			(function(i) {
+				setTimeout(function() {
+					k[i].style.opacity = 1;
+					k[i].style.left = "calc(50% - 25px)";
+				}, (i)*30);
+			})(i)
+		}
+
+	}, 2000);
+	// setTimeout(function() {
+	// 	for(var i = 0; i < 22; i++) {
+	// 		(function(i) {
+	// 			setTimeout(function() {
+	// 				k[i].style.opacity = 1;
+	// 				k[i].style.left = "calc(50% - 7vw)";
+	// 			}, (i)*20);
+	// 		})(i)
+	// 	}
+	// 	for(var x = 0; x < 22; x++) {
+			
+	// 	}
+	// }, 2500);
+	// setTimeout(function() {
+	// 	Btn.style.opacity = 1;
+	// }, 3000);
+	// document.getElementById("ls").innerHTML = " ";
+
+} 
+
+
+// for(var i = 0; i < 44; i++) {
+// 	var div = document.createElement("div");
+// 	if (i < 22) {
+// 		div.style.background = "url(images/" + i + "-0.png)";
+// 	}else{
+// 		div.style.background = "url(images/" + (i-22) + "-1.png)";
+// 	}
+// 	document.getElementById("ls").appendChild(div).className = "cache";
+// }
+
+
+
+// setTimeout(function(){
+//     if (Refresh == false) {
+//         location.reload();
+//     }
+// }, 5000);
+
+
 var Name_0 = [
 ["愚者","与众不同、幸运、不拘一格、追求新奇的梦想、眼界狭小、勇于冒险、向往自由、有艺术家气质、直攻要害、情感起伏不定、自由恋爱","有一种洒脱、无拘无束的态度，保持着轻松自然的心情迎接未来的挑战。","你即将开始或已经步入一段轻松简单的感情生活，不会如胶似漆，也不会平淡无味。它也可以形容你的伴侣，TA是一个难以琢磨的天真的人，喜欢现在的自由生活，不愿被死板的计划和安排所左右。"],
 ["魔术师","成功、果断、好的开端、计划完美、发展空间大、智力非凡、思维活跃、想象力丰富、拥有默契的伴侣、出现新恋人","在事业上有良好的动机、宽阔的心胸和充足的准备，一切都在你的计划之中，把握住机会向着成功稳步前进。","爱情更是游刃有余，外在的环境根本对你没有作用，处于主动地位。"],
@@ -63,196 +293,3 @@ var Name_1 = [
 ["审判","一蹶不振、幻灭、隐瞒、坏消息、无法决定、缺少目标、没有进展、消除、恋恋不舍","缺乏清晰的判断，试图用物质填充精神的空虚。","不断地回忆着过去的美好时光，不愿意去正视目前的问题，你们的关系已经是貌合神离了。"],
 ["世界","未完成、失败、准备不足、盲目接受、一时不顺利、半途而废、精神颓废、饱和状态、合谋、态度不够融洽、感情受挫","在事业的路上有巨大的障碍，你精神不振，丧失了挑战的动力。","你们不再重视承诺，只是盲目接受对方。彼此最好能沟通一下，不要让痛苦继续纠缠着你们。"]
 ];
-var directionArr = ["(正位)","(逆位)"]
-if (localStorage.save_Time != new Date().getDate()) {
-	localStorage.removeItem("save_Time");
-	localStorage.removeItem("save_Name");
-	localStorage.removeItem("save_direction");
-}
-var time = localStorage.save_Time;
-console.log(time);
-Btn.addEventListener("click",function(e){
-	if (time == undefined) {
-		direction = Math.round(Math.random());
-		Num = Math.floor(Math.random()*22)
-		localStorage.save_Time = new Date().getDate();
-		localStorage.save_Name = Num;
-		localStorage.save_direction = direction;
-	}else{
-		direction = localStorage.save_direction;
-		Num = localStorage.save_Name;
-	}
-	
-	swiper_2.style.background = "url(images/" + Num + "-" + direction + ".png)";
-	swiper_2.style.backgroundSize = "100%";
-	console.log(direction);
-	Btn.style.pointerEvents = "none";
-	for(var i = 0; i < 5; i++) {
-		(function(i) {
-			setTimeout(function() {
-				for(var x = 0; x < 22; x++) {
-					k[x].style.left =  14 + Math.ceil(Math.random()*56) + "vw";
-					k[x].style.top =  60 + Math.ceil(Math.random()*10) + "vh";
-					k[x].style.transform = "rotate(" + i + Math.ceil(Math.random()*100) + "deg)";
-				}
-			}, (i)*500);
-		})(i)
-	}
-	setTimeout(function() {
-		for(var x = 0; x < 22; x++) {
-			k[x].style.left =  "calc(50% - 7vw)";
-			k[x].style.top =  "66vh";
-			k[x].style.transform = "rotate(0deg)";
-		}
-	}, 2500);
-	setTimeout(function() {
-		Mask_h.style.opacity = 1;
-		Cards.style.display = "block";
-	}, 3200);
-	setTimeout(function() {
-		Cards.style.width = "80vw";
-		Cards.style.height = "auto";
-		Cards.style.left =  "calc(50% - 40vw)";
-		Cards.style.top =  "5vh";
-	}, 3300);
-	setTimeout(function() {
-		Cards.style.display = "none";
-		Cards_rotate.style.opacity = 1;
-		
-
-	}, 4300);
-	setTimeout(function() {
-		Cards.style.display = "none";
-		Cards_rotate.style.opacity = 1;
-		swiper.slideTo(1, 1000, false);
-
-	}, 4500);
-	setTimeout(function() {
-		Cards.src = "images/" + Num + "-" + direction + ".png";
-		Cards.style.display = "block";
-		Cards_rotate.style.display = "none";
-		Btn_1.style.display = "block";
-		Btn_1.style.opacity = 1;
-		Btn.style.display = "none";
-	}, 5300);
-	setTimeout(function() {
-		// Cards.style.width = "30vw";
-		// Cards.style.left =  "calc(50% - 15vw)";
-		// Cards.style.top =  "5vh";
-	}, 6000);
-})
-Btn_1.addEventListener("click",function(e){
-	Cards.style.width = "30vw";
-	Cards.style.height = "auto";
-	Cards.style.left =  "calc(50% - 15vw)";
-	Cards.style.top =  "5vh";
-	cards_height = Cards.offsetheight;
-	unscramble.style.top = "calc(53vw + 5vh + 10px)";
-	text_title.style.display = "block";
-	text_box.style.top = "calc(53vw + 5vh + 50px)";
-	if (direction == 0) {
-		Name = Name_0[Num]
-	}else{
-		Name = Name_1[Num]
-	}
-	// console.log(Name);
-	text_title.innerHTML = Name[0] + directionArr[direction];
-	text[0].innerHTML = Name[1];
-	text[1].innerHTML = Name[2];
-	text[2].innerHTML = Name[3];
-	Btn_1.style.opacity = 0;
-	setTimeout(function() {
-		Btn_1.style.display = "none";
-		text_title.style.opacity = 1;
-	}, 1000);
-	
-})
-for(var i = 0; i < 22; i++) {
-	var Img = document.createElement("img");
-	Img.src = "images/Cards-bg.png";
-	document.body.appendChild(Img).className = "k0";
-
-}
-
-var swiper = new Swiper('.swiper-container', {
-	effect: 'flip',
-	grabCursor: true,
-});
-
-
-
-
-
-setTimeout(function() {
-	document.getElementById("load-3").style.transform = "rotate(360deg)";
-}, 300);
-setTimeout(function() {
-	document.getElementById("load-2").style.transform = "rotate(-360deg)";
-}, 200);
-setTimeout(function() {
-	document.getElementById("load-1").style.transform = "rotate(360deg)";
-}, 100);
-setTimeout(function() {
-	document.getElementById("jz-text").style.opacity = 1;
-}, 500);
-
-window.onload = function(){ 
-	Refresh = true;
-    document.getElementById("jz-text").style.display = "none";
-	setTimeout(function() {
-		document.getElementById("load-3").style.opacity = 0;
-		document.getElementById("load-2").style.opacity = 0;
-		document.getElementById("load-1").style.opacity = 0;
-		document.getElementById("load-bg").style.opacity = 1;
-		document.getElementById("bz").style.opacity = 1;
-		document.getElementById("bz-w").style.opacity = 1;
-		document.getElementById("title").style.opacity = 1;
-	}, 1000);
-	setTimeout(function() {
-		document.getElementById("bz").style.transition = "all 0.5s ease 0s";
-	}, 1900);
-	setTimeout(function() {
-		document.getElementById("bz").style.top = 0;
-		document.getElementById("title").style.top = 0;
-	}, 2000);
-	setTimeout(function() {
-		for(var i = 0; i < 22; i++) {
-			(function(i) {
-				setTimeout(function() {
-					k[i].style.opacity = 1;
-					k[i].style.left = "calc(50% - 7vw)";
-				}, (i)*20);
-			})(i)
-		}
-		for(var x = 0; x < 22; x++) {
-			
-		}
-	}, 2500);
-	setTimeout(function() {
-		Btn.style.opacity = 1;
-	}, 3000);
-	document.getElementById("ls").innerHTML = " ";
-
-} 
-
-
-for(var i = 0; i < 44; i++) {
-	var div = document.createElement("div");
-	if (i < 22) {
-		div.style.background = "url(images/" + i + "-0.png)";
-	}else{
-		div.style.background = "url(images/" + (i-22) + "-1.png)";
-	}
-	document.getElementById("ls").appendChild(div).className = "cache";
-}
-
-
-
-setTimeout(function(){
-    if (Refresh == false) {
-        location.reload();
-    }
-}, 5000);
-
-
-
