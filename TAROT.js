@@ -23,6 +23,7 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 	frame.style.width = "100%";
 	frame.style.height = "100%";
 	document.getElementById("load-m").style.display = "block";
+	document.getElementById("pc-bg").style.display = "none";
 }else{
 	console.log("电脑");
 	equipment = "电脑";

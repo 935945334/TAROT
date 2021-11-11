@@ -49,8 +49,9 @@ img{
 	bottom: 0;
 }
 #frame{
-	/*background: #000;*/
+	background: #34313f;
 	position: relative;
+	z-index: 2;
 }
 #load-m{
 	display: none;
