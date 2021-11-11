@@ -90,7 +90,7 @@ Btn.addEventListener("click",function(e){
 	}, 2500);
 	setTimeout(function() {
 		if (equipment == "手机") {
-			var www = window.screen.height*0.8/16*9
+			var www = document.body.clientHeight*0.8/16*9
 		}else{
 			var www = 330;
 		}
@@ -101,10 +101,8 @@ Btn.addEventListener("click",function(e){
 		document.getElementById("bz").style.opacity = 0;
 		document.getElementById("card-title").style.opacity = 0;
 		Cards_rotate.style.width = www + "px";
-		// Cards_rotate.style.height = window.screen.height*0.8 + "px";
 		Cards_rotate.style.left = "calc(50% - " + www/2 + "px)";
 		Cards.style.width = www + "px";
-		// Cards.style.height = window.screen.height*0.8 + "px";
 		Cards.style.left = "calc(50% - " + www/2 + "px)";
 		document.getElementById("swiper-slide-img-1").style.width = www + "px";
 		document.getElementById("swiper-slide-img-2").style.width = www + "px";
@@ -134,7 +132,7 @@ Btn.addEventListener("click",function(e){
 });
 Btn_2.addEventListener("click",function(e){
 	if (equipment == "手机") {
-		var www = window.screen.height*0.18
+		var www = document.body.clientHeight*0.18
 	}else{
 		var www = 150;
 	}
