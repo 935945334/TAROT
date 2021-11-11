@@ -206,44 +206,18 @@ window.onload = function(){
 		}
 
 	}, 2000);
-	// setTimeout(function() {
-	// 	for(var i = 0; i < 22; i++) {
-	// 		(function(i) {
-	// 			setTimeout(function() {
-	// 				k[i].style.opacity = 1;
-	// 				k[i].style.left = "calc(50% - 7vw)";
-	// 			}, (i)*20);
-	// 		})(i)
-	// 	}
-	// 	for(var x = 0; x < 22; x++) {
-			
-	// 	}
-	// }, 2500);
-	// setTimeout(function() {
-	// 	Btn.style.opacity = 1;
-	// }, 3000);
-	// document.getElementById("ls").innerHTML = " ";
+
 
 } 
 
 
-// for(var i = 0; i < 44; i++) {
-// 	var div = document.createElement("div");
-// 	if (i < 22) {
-// 		div.style.background = "url(images/" + i + "-0.png)";
-// 	}else{
-// 		div.style.background = "url(images/" + (i-22) + "-1.png)";
-// 	}
-// 	document.getElementById("ls").appendChild(div).className = "cache";
-// }
 
 
-
-// setTimeout(function(){
-//     if (Refresh == false) {
-//         location.reload();
-//     }
-// }, 5000);
+setTimeout(function(){
+    if (Refresh == false) {
+        location.reload();
+    }
+}, 5000);
 
 
 var Name_0 = [
